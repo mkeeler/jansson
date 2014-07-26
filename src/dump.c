@@ -230,7 +230,7 @@ static int do_dump(const json_t *json, size_t flags, int depth,
 
             /* detect circular references */
             array = json_to_array(json);
-            if(array->visited)
+            if(array->visited && flags ^ JSON_DONT_CHECK_CYCLICAL)
                 goto array_error;
             array->visited = 1;
 
@@ -289,7 +289,7 @@ static int do_dump(const json_t *json, size_t flags, int depth,
 
             /* detect circular references */
             object = json_to_object(json);
-            if(object->visited)
+            if(object->visited && flags ^ JSON_DONT_CHECK_CYCLICAL)
                 goto object_error;
             object->visited = 1;
 
