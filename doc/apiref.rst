@@ -909,6 +909,13 @@ can be ORed together to obtain *flags*.
 
    .. versionadded:: 2.4
 
+``JSON_DONT_CHECK_CYCLICAL``
+   Do not check for cycles when dumping a JSON structure. This should
+   only be used when you can ensure that there are no cycles and you
+   need to dump JSON structures in multiple threads simultaneously
+
+   .. versionadded:: 2.7
+
 ``JSON_REAL_PRECISION(n)``
    Output all real numbers with at most *n* digits of precision. The
    valid range for *n* is between 0 and 31 (inclusive), and other
